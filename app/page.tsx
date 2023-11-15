@@ -18,7 +18,17 @@ export const revalidate = 5;
 export default async function Page() {
 	const { data } = await getClient().query<Query>({ query });
 
-	console.log(data.books![0]?.title);
+	if (!data.books) return <div>loading...</div>;
 
-	return <main>data</main>;
+	return (
+		<main>
+			{data?.books.map((book, i) => (
+				<div key={i}>
+					<div>{book!.title}</div>
+					<div>{book!.author}</div>
+					<div>{book!.date}</div>
+				</div>
+			))}
+		</main>
+	);
 }

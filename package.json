@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+		"dev": "graphql-codegen --config codegen.ts && next dev",
 		"build": "graphql-codegen --config codegen.ts && next build",
 		"start": "next start",
 		"lint": "next lint",
