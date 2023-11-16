@@ -4,12 +4,13 @@ import {
 	NextSSRApolloClient,
 } from "@apollo/experimental-nextjs-app-support/ssr";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
+import { GRAPHQL_URL } from "config";
 
 export const { getClient } = registerApolloClient(() => {
 	return new NextSSRApolloClient({
 		cache: new NextSSRInMemoryCache(),
 		link: new HttpLink({
-			uri: "http://localhost:4000",
+			uri: GRAPHQL_URL,
 		}),
 	});
 });

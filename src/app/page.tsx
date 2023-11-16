@@ -1,7 +1,8 @@
-import { getClient } from "@/lib/graphql";
-
 import { gql } from "@apollo/client";
-import { Query } from "./gql/graphql";
+import { getClient } from "@/lib/graphql";
+import { Query } from "@/types/graphql";
+import { LoginButton } from "@/components/LoginButton";
+import { SignupButton } from "@/components/SignupButton";
 
 const query = gql`
 	query Books {
@@ -22,6 +23,8 @@ export default async function Page() {
 
 	return (
 		<main>
+			<LoginButton />
+			<SignupButton />
 			{data?.books.map((book, i) => (
 				<div key={i}>
 					<div>{book!.title}</div>
