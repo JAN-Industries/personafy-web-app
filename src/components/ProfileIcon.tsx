@@ -1,29 +1,19 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
-import { redirect } from "next/dist/client/components/navigation";
-import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import options from "@/app/api/auth/[...nextauth]/options";
 
-export default function ProfileIcon() {
-	const { data: session } = useSession({
-		required: true,
-		onUnauthenticated() {
-			redirect("/api/auth/signin?callbackUrl=/client");
-		},
-	});
-
-	console.log("user", session);
+export default async function ProfileIcon() {
+	const session = await getServerSession(options);
 
 	return (
-		<div>
-			{/* <Image
-				src={user?.picture ?? ""}
-				alt="Profile"
-				className="w-8 h-8 rounded-full"
-				width={80}
-				height={80}
-			/> */}
-		</div>
+		<Image
+			className="border-2 border-black dark:border-slate-300 drop-shadow-xl shadow-black rounded-full"
+			src={session?.user?.image ?? "/default-profile-pic.jpg"}
+			width={32}
+			height={32}
+			alt={session?.user?.name ?? "Profile Pic"}
+			priority={true}
+		/>
 	);
 }

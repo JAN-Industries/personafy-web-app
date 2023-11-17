@@ -19,6 +19,7 @@ export default async function NavBar() {
 				{session && (
 					<>
 						<LogoutButton />
+						<ProfileIcon />
 					</>
 				)}
 			</nav>
