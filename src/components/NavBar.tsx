@@ -1,31 +1,27 @@
-"use client";
-
-import { useUser } from "@auth0/nextjs-auth0/client";
+import options from "@/app/api/auth/[...nextauth]/options";
 import React from "react";
-import { SignupButton } from "@/components/buttons/Signup";
-import { LoginButton } from "@/components/buttons/Login";
-import { LogoutButton } from "@/components/buttons/Logout";
+import { LoginButton } from "@/components/buttons/Login.client";
+import { LogoutButton } from "@/components/buttons/Logout.client";
 import ProfileIcon from "./ProfileIcon";
+import { getServerSession } from "next-auth";
 
-export const NavBar = () => {
-	const { user } = useUser();
+export default async function NavBar() {
+	const session = await getServerSession(options);
 
 	return (
 		<div className="nav-bar__buttons">
 			<nav className="w-full flex flex-row justify-end gap-4 p-2 text-center">
-				{!user && (
+				{!session && (
 					<>
-						<SignupButton />
 						<LoginButton />
 					</>
 				)}
-				{user && (
+				{session && (
 					<>
 						<LogoutButton />
-						<ProfileIcon />
 					</>
 				)}
 			</nav>
 		</div>
 	);
-};
+}
