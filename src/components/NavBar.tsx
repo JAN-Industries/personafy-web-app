@@ -10,7 +10,7 @@ export default async function NavBar() {
 
 	return (
 		<div className="nav-bar__buttons">
-			<nav className="w-full flex flex-row justify-end gap-4 p-2 text-center">
+			<nav className="w-full flex flex-row justify-end gap-4 p-2 text-center text-[#A6A0A0]">
 				{!session && (
 					<>
 						<LoginButton />

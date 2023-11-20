@@ -1,39 +1,14 @@
-import { gql } from "@apollo/client";
-import createApolloClient from "@/lib/graphql";
-import { Query } from "@/types/graphql";
-import { getAuth } from "@/app/api/auth/[...nextauth]/options";
-import { NextRequest } from "next/server";
-import { cookies } from "next/headers";
-import { decode } from "next-auth/jwt";
-
-const query = gql`
-	query Books {
-		books {
-			author
-			date
-			title
-		}
-	}
-`;
-
-export const revalidate = 5;
-
 export default async function Page() {
-	const { data } = await createApolloClient().query<Query>({
-		query,
-	});
-
-	if (!data.books) return <div>loading...</div>;
-
-	return (
-		<main>
-			{data?.books.map((book, i) => (
-				<div key={i}>
-					<div>{book!.title}</div>
-					<div>{book!.author}</div>
-					<div>{book!.date}</div>
-				</div>
-			))}
-		</main>
-	);
+  return (
+    <main className="flex flex-col justify-center w-screen h-full">
+      <div className="flex flex-col justify-center items-center gap-3">
+        <h1 className="w-[1000px] text-center text-[58px] text-[#A6A0A0]">
+          Transforming your profile into personalized narratives with AI
+        </h1>
+        <button className="bg-[#7ACDAA] rounded-2xl font-semibold px-3 py-2 text-4xl text-[#282C37]">
+          GET STARTED
+        </button>
+      </div>
+    </main>
+  );
 }
