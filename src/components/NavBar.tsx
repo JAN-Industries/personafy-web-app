@@ -1,7 +1,7 @@
 import options from "@/app/api/auth/[...nextauth]/options";
 import React from "react";
-import { LoginButton } from "@/components/buttons/Login.client";
-import { LogoutButton } from "@/components/buttons/Logout.client";
+import { LoginButton } from "@/components/auth/Login.client";
+import { LogoutButton } from "@/components/auth/Logout.client";
 import ProfileIcon from "./ProfileIcon";
 import { getServerSession } from "next-auth";
 

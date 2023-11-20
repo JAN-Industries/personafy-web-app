@@ -1,5 +1,11 @@
 import { JWT } from "next-auth/jwt";
 import GithubProvider from "next-auth/providers/github";
+import type {
+	GetServerSidePropsContext,
+	NextApiRequest,
+	NextApiResponse,
+} from "next";
+import { getServerSession } from "next-auth";
 
 const options = {
 	secret: process.env.NEXTAUTH_SECRET,
@@ -21,6 +27,18 @@ const options = {
 			return session;
 		},
 	},
+	jwt: {
+		secret: process.env.NEXTAUTH_SECRET,
+	},
 };
+
+export function getAuth(
+	...args:
+		| [GetServerSidePropsContext["req"], GetServerSidePropsContext["res"]]
+		| [NextApiRequest, NextApiResponse]
+		| []
+) {
+	return getServerSession(...args, options);
+}
 
 export default options;
