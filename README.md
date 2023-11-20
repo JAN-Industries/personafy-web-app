@@ -17,7 +17,12 @@ Then, install dependencies:
 pnpm install
 ```
 
-**Important:** Set up and run graphQL server before starting the development server, as this client depends on types generated from the server.
+**Important:** Set up and run graphQL server before starting the next step, as codegen depends on types generated from the graphql server.
+
+Next, install graphql typescript types:
+
+```bash
+pnpm codegen
 
 Finally, run the development server:
 
