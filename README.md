@@ -1,6 +1,6 @@
-## ChatGPMe Client
+## Personafy Web Client
 
-This is a client for the ChatGPMe project. It is built with Next.js and Tailwind CSS.
+This is a web client for the Personafy project. It is built with Next.js 14 and Tailwind CSS.
 
 ## Getting Started
 
@@ -17,13 +17,13 @@ Then, install dependencies:
 pnpm install
 ```
 
-**Important:** Set up and run graphQL server before starting the next step, as codegen depends on types generated from the graphql server.
+**Important:** Set up and run the GraphQL server before starting the next step, as codegen depends on types generated from the GraphQL server.
 
-Next, install graphql typescript types:
+Next, create graphql typescript types:
 
 ```bash
 pnpm codegen
-
+```
 Finally, run the development server:
 
 ```bash
