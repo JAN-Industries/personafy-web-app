@@ -48,11 +48,14 @@ export default async function ServerPage() {
 	const userData = (
 		await createApolloClient().query<Query>({ query: userQuery })
 	).data.user;
-	console.log(userData!);
+	// console.log(userData!);
 
 	return (
-		<section className="flex flex-col gap-6">
+		<section className="flex flex-row gap-6 h-[80%]">
 			<UserCard user={userData!} />
+			<div className="w-[1px] h-full py-6">
+				<div className="bg-white h-full w-full"></div>
+			</div>
 		</section>
 	);
 }

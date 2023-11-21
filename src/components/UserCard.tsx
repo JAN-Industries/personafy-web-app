@@ -1,6 +1,7 @@
 import { User } from "@/types/graphql";
-import Image from "next/image";
 import ProfileIcon from "./ProfileIcon";
+import { gql } from "@apollo/client";
+import SmallTextInput from "./input/text/Small";
 
 type Props = {
 	user: User;
@@ -23,9 +24,17 @@ export default function Card({ user }: Props) {
 
 	return (
 		<section className="flex flex-col gap-4">
-			{greeting}
-			{emailDisplay}
 			{userImage}
+			<SmallTextInput
+				query={gql`
+					query User {
+						user {
+							firstName
+						}
+					}
+				`}
+				mutation={""}
+			/>
 		</section>
 	);
 }
