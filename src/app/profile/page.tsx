@@ -6,7 +6,7 @@ import createApolloClient from "@/lib/graphql";
 import { Query } from "@/types/graphql";
 
 const userQuery = gql`
-	query User {
+	query UserQuery {
 		user {
 			email
 			username
@@ -48,7 +48,6 @@ export default async function ServerPage() {
 	const userData = (
 		await createApolloClient().query<Query>({ query: userQuery })
 	).data.user;
-	// console.log(userData!);
 
 	return (
 		<section className="flex flex-row gap-6 h-[80%]">
