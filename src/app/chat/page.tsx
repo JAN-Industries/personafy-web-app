@@ -1,19 +1,36 @@
 "use client";
 import ChatWindow from "@/components/chat/ChatWindow";
 import { useState } from "react";
-
+import {  gql } from "@apollo/client";
+import { getClient } from "@/lib/graphql";
+import { Query } from "@/types/graphql";
 
 
 export default function ChatPage() {
-	const [userRequests, setUserRequests] = useState(["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."])
-	const [aiResponses, setAiResponses] = useState(["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."])
+	const [userRequests, setUserRequests] = useState<string[]>([])
+	const [aiResponses, setAiResponses] = useState<string[]>([])
+
+	const onSubmit = async (text: string) => {
+		setUserRequests([...userRequests, text])
+		// const query = gql`
+		// 					query AskGPT($question: String) {
+		// 						askGPT(question: ${text}) {
+		// 						content
+		// 						error
+		// 						}
+		// 					}
+		// 					`;
+		// const { loading, error, data } = await getClient().query<Query>({query});
+		// console.log(data);
+		// setAiResponses([...aiResponses, data.content])
+		setAiResponses([...aiResponses, "You suck!"])
+	}
 	return (
 		<section className="flex flex-col gap-6">
 			<ChatWindow 
 			userRequests={userRequests} 
 			aiResponses={aiResponses} 
-			setUserRequests={setUserRequests} 
-			setAiResponses={setAiResponses}/>
+			onSubmit={onSubmit}/>
 		</section>
 	);
 }

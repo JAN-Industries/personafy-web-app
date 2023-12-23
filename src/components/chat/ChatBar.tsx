@@ -5,13 +5,19 @@ export default function ChatBar(props: {onSubmit: Function}) {
 	const [value, setValue] = useState("");
 	const [overflow, setOverflow] = useState("hidden")
 	const textAreaRef = useRef<HTMLTextAreaElement>(null);
-	const handleSubmit = (e: React.KeyboardEvent) => {
+
+	const handleSubmit = () => {
+		props.onSubmit(value);
+		setValue("");
+	}
+
+	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (e.key == 'Enter' && !e.shiftKey){
-			props.onSubmit(value);
+			handleSubmit()
 			e.preventDefault();
-			setValue("");
 		}
 	}
+
 	useEffect(() => {
 		if (textAreaRef.current) {
 			const prevHeight = textAreaRef.current.style.height;
@@ -41,13 +47,17 @@ export default function ChatBar(props: {onSubmit: Function}) {
 		<div className="flex justify-center">
 				<textarea 
 				ref={textAreaRef}
-				className="border-2 resize-none w-2/5 text-lg px-4 py-4"
+				className="resize-none w-2/3 text-md px-4 py-4"
 				rows={1} 
 				value={value}
-				onKeyDown={handleSubmit}
+				onKeyDown={handleKeyDown}
 				onChange={handleChange}
+				placeholder="Message your persona..."
 				style={{overflowX: "hidden",
-				overflowY: overflow} as CSSProperties}/>
+				overflowY: overflow,
+				border: '2px solid gray',
+				borderRadius: '2rem'
+				} as CSSProperties}/>
 		</div>
 	);
 }
