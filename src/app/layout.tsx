@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import AuthProvider from "@/lib/AuthProvider";
+import {ApolloWrapper} from "@/lib/apollo-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,14 +19,16 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<AuthProvider>
-				<body className={inter.className}>
-					<>
-						{/* <NavBar /> */}
-						{children}
-					</>
-				</body>
-			</AuthProvider>
+			<ApolloWrapper >
+				<AuthProvider>
+					<body className={inter.className}>
+						<>
+							{/* <NavBar /> */}
+							{children}
+						</>
+					</body>
+				</AuthProvider>
+			</ApolloWrapper>
 		</html>
 	);
 }

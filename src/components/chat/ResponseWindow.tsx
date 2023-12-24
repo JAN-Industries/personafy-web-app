@@ -14,14 +14,14 @@ export default function ResponseWindow(props: {userRequests: string[], aiRespons
                     alt="Personafy Logo"/> 
                 </div>
                 <div className="flex justify-center">
-                    <p className=" text-lg">
+                    <p className=" text-lg text-center">
                         <strong>
                             I'm here to help you be your best self.
                         </strong>
                     </p>
                 </div>
                 <div className="flex justify-center">
-                    <p className=" text-sm">
+                    <p className=" text-sm text-center">
                         Get started by typing in the text prompt below. You can ask your persona for help with anything!
                     </p>
                 </div>
@@ -33,10 +33,10 @@ export default function ResponseWindow(props: {userRequests: string[], aiRespons
 			{
                 props.userRequests.map((response, index) => {
                     return (
-                        <>
+                        <div key={index}>
                             <ChatBubble author="User" content={response} user={true}/>
                             <ChatBubble author="ChatGPT" content={props.aiResponses[index]} user={false} />
-                        </>
+                        </div>
                     )
                 })
             }

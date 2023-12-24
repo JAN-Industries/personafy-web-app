@@ -10,7 +10,7 @@ export default function ChatBubble(props: { author: string, content: string, use
             </div>
             <div>
                 <p className="ml-10">
-                    {props.content}
+                    {props.content == undefined && !props.user ? "Loading...": props.content}
                 </p>
             </div>
         </div>
