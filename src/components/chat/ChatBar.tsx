@@ -37,7 +37,7 @@ export default function ChatBar(props: {onSubmit: Function}) {
 				}
 			}
 		}
-	}, [textAreaRef, value]);
+	}, [textAreaRef, value, overflow]);
 
 	const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const val = evt.target?.value;
