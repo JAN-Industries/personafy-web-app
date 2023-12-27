@@ -23,6 +23,6 @@
 			"@/*": ["src/*"]
 		}
 	},
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/apollo-provider.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/apollo-provider.tsx"],
   "exclude": ["node_modules"]
 }

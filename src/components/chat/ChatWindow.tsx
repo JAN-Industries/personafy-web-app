@@ -21,12 +21,19 @@ export default function ChatWindow(
 	}, [props.userRequests, props.aiResponses]);
 
 	return (
-		<div className="flex flex-col h-screen">
-            <div ref={responseWindowRef} className="flex w-full justify-center p-5 overflow-y-auto flex-grow">
-                <ResponseWindow userRequests={props.userRequests} aiResponses={props.aiResponses} loading={false} />
-            </div>
+		<div className="flex flex-col h-full">
+			<div
+				ref={responseWindowRef}
+				className="flex w-full justify-center p-5 overflow-y-auto flex-grow"
+			>
+				<ResponseWindow
+					userRequests={props.userRequests}
+					aiResponses={props.aiResponses}
+					loading={false}
+				/>
+			</div>
 			<div className="mx-auto inset-x-0 bottom-0 mb-4 w-full">
-				<ChatBar onSubmit={props.onSubmit}/>
+				<ChatBar onSubmit={props.onSubmit} />
 			</div>
 		</div>
 	);

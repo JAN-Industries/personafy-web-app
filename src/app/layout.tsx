@@ -22,10 +22,8 @@ export default function RootLayout({
 			<ApolloWrapper>
 				<AuthProvider>
 					<body className={inter.className + " text-black"}>
-						<>
-							{/* <NavBar /> */}
-							{children}
-						</>
+						{/* <NavBar /> */}
+						{children}
 					</body>
 				</AuthProvider>
 			</ApolloWrapper>
