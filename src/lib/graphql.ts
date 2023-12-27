@@ -7,7 +7,6 @@ import {
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 import { GRAPHQL_URL } from "config";
 import { cookies } from "next/headers";
-import { decode } from "next-auth/jwt";
 
 export default function createApolloClient() {
 	const httpLink = new HttpLink({

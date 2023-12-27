@@ -10,18 +10,31 @@ export default async function NavBar() {
 
 	return (
 		<div className="nav-bar__buttons">
-			<nav className="w-full flex flex-row justify-end gap-4 p-2 text-center">
-				{!session && (
-					<>
-						<LoginButton />
-					</>
-				)}
-				{session && (
-					<>
-						<LogoutButton />
-						<ProfileIcon />
-					</>
-				)}
+			<nav className="w-full flex flex-row justify-between p-2 text-center">
+				<div className="flex flex-row gap-4 text-xl font-bold">
+					<a className="hover:underline" href="/">
+						Home
+					</a>
+					<a className="hover:underline" href="/serverExample">
+						Server Example
+					</a>
+					<a className="hover:underline" href="/clientExample">
+						Client Example
+					</a>
+				</div>
+				<div className="flex flex-row gap-4">
+					{!session && (
+						<>
+							<LoginButton />
+						</>
+					)}
+					{session && (
+						<>
+							<LogoutButton />
+							<ProfileIcon />
+						</>
+					)}
+				</div>
 			</nav>
 		</div>
 	);
