@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 import { getServerSession } from "next-auth/next";
 import options from "../api/auth/[...nextauth]/options";
 import UserCard from "@/components/UserCard";
-import createApolloClient from "@/lib/graphql";
+import createApolloClient from "@/lib/apolloClientSSR";
 
 const query = gql`
 	query User {

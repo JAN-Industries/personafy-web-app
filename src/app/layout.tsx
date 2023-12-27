@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import AuthProvider from "@/components/auth/AuthProvider";
+import { CookiesProvider } from "react-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,14 +19,14 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
+			{/* <CookiesProvider> */}
 			<AuthProvider>
 				<body className={inter.className}>
-					<>
-						<NavBar />
-						{children}
-					</>
+					<NavBar />
+					{children}
 				</body>
 			</AuthProvider>
+			{/* </CookiesProvider> */}
 		</html>
 	);
 }

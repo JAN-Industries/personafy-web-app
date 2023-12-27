@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import createApolloClient from "@/lib/graphql";
+import createApolloClient from "@/lib/apolloClientSSR";
 import { Query } from "@/types/graphql";
 
 const query = gql`

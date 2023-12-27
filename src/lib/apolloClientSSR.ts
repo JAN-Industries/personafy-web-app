@@ -5,7 +5,7 @@ import {
 	NextSSRApolloClient,
 } from "@apollo/experimental-nextjs-app-support/ssr";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
-import { GRAPHQL_URL } from "config";
+import { AUTH_COOKIE_NAME, GRAPHQL_URL } from "config";
 import { cookies } from "next/headers";
 
 export default function createApolloClient() {
@@ -14,7 +14,7 @@ export default function createApolloClient() {
 	});
 
 	const cookieStore = cookies();
-	const jwe = cookieStore.get("next-auth.session-token");
+	const jwe = cookieStore.get(AUTH_COOKIE_NAME);
 	const authLink = setContext((_, { headers }) => {
 		return {
 			headers: {
