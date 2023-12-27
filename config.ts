@@ -5,3 +5,6 @@ export const URL =
 
 export const GRAPHQL_URL =
 	process.env.NEXT_PUBLIC_GRAPHQL_URL || "http://localhost:4000";
+
+
+export const AUTH_COOKIE_NAME = "next-auth.session-token";

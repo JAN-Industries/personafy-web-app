@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { getClient } from "@/lib/graphql";
+import createApolloClient from "@/lib/apolloClientSSR";
 import { Query } from "@/types/graphql";
 
 const query = gql`
@@ -15,7 +15,9 @@ const query = gql`
 export const revalidate = 5;
 
 export default async function Page() {
-	const { data } = await getClient().query<Query>({ query });
+	const { data } = await createApolloClient().query<Query>({
+		query,
+	});
 
 	if (!data.books) return <div>loading...</div>;
 
