@@ -1,10 +1,7 @@
 import { gql } from "@apollo/client";
-import createApolloClient from "@/lib/graphql";
+import createApolloClient from "@/lib/apolloClientSSR";
 import { Query } from "@/types/graphql";
-import { getAuth } from "@/app/api/auth/[...nextauth]/options";
-import { NextRequest } from "next/server";
-import { cookies } from "next/headers";
-import { decode } from "next-auth/jwt";
+import NavBar from "@/components/NavBar";
 
 const query = gql`
 	query Books {
