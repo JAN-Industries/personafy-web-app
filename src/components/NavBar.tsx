@@ -1,12 +1,11 @@
-import options from "@/app/api/auth/[...nextauth]/options";
 import React from "react";
 import { LoginButton } from "@/components/auth/Login.client";
 import { LogoutButton } from "@/components/auth/Logout.client";
 import ProfileIcon from "./ProfileIcon";
-import { getServerSession } from "next-auth/next";
+import { auth } from "@/lib/auth";
 
 export default async function NavBar() {
-	const session = await getServerSession(options);
+	const session = await auth();
 
 	return (
 		<header className="nav-bar__buttons">

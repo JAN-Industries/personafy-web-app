@@ -1,10 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { getServerSession } from "next-auth/next";
-import options from "@/app/api/auth/[...nextauth]/options";
+import { auth } from "@/lib/auth";
 
 export default async function ProfileIcon() {
-	const session = await getServerSession(options);
+	const session = await auth();
 
 	return (
 		<Image
