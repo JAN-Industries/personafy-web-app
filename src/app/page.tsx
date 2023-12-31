@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import createApolloClient from "@/lib/apolloClientSSR";
 import { Query } from "@/types/graphql";
+import NavBar from "@/components/NavBar";
 
 const query = gql`
 	query Books {
