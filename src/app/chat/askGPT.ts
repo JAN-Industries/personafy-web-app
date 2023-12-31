@@ -1,7 +1,7 @@
 "use server";
 
 import createApolloClient from "@/lib/apolloClientSSR";
-import { AskGptQuery } from "@/types/graphql";
+import { GptQueryResponse } from "@/types/graphql";
 import { gql } from "@apollo/client";
 
 const GPT_QUERY = gql`
@@ -13,7 +13,7 @@ const GPT_QUERY = gql`
 	}
 `;
 
-export const askGPT = async (question: string): Promise<AskGptQuery> => {
+export const GPTQuery = async (question: string): Promise<GptQueryResponse> => {
 	const client = createApolloClient();
 	const response = await client.query({
 		query: GPT_QUERY,
@@ -21,5 +21,5 @@ export const askGPT = async (question: string): Promise<AskGptQuery> => {
 	});
 	const { data } = response;
 
-	return data;
+	return data.askGPT;
 };

@@ -3,7 +3,7 @@
 import ChatBar from "@/app/chat/ChatBar";
 import ResponseWindow from "./ResponseWindow";
 import { useRef, useState } from "react";
-import { askGPT } from "./askGPT";
+import { GPTQuery } from "./askGPT";
 
 export default function ChatWindow() {
 	const responseWindowRef = useRef<HTMLDivElement>(null);
@@ -13,8 +13,9 @@ export default function ChatWindow() {
 
 	const formAction = async (formData: FormData) => {
 		setUserRequests([...userRequests, formData.get("text") as string]);
-		const GPTResponse = await askGPT(formData.get("text") as string);
-		setAiResponses([...aiResponses, GPTResponse.askGPT!.content!]);
+		const GPTResponse = await GPTQuery(formData.get("text") as string);
+		console.log(GPTResponse);
+		setAiResponses([...aiResponses, GPTResponse!.content!]);
 	};
 
 	// useEffect(() => {
