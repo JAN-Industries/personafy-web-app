@@ -7,9 +7,9 @@ import createApolloClient from "@/lib/apolloClientSSR";
 const query = gql`
 	query User {
 		user {
+			firstName
+			lastName
 			profile {
-				firstName
-				lastName
 				education {
 					id
 					school
